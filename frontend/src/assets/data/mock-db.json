@@ -1,0 +1,5 @@
+{
+  "_comment": "這是說明，不會被程式使用，一般預設建議放在根目錄",
+  "_run": "npx json-server --watch src/assets/data/mock-db.json --port 3000",
+  "svg": "<svg width=\"210mm\" height=\"297mm\" viewBox=\"0 0 210 297\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\">\n  <!-- 背景 -->\n  <rect class=\"draggable\" x=\"0\" y=\"0\" width=\"210\" height=\"297\" fill=\"#fff\" />\n\n  <!-- 圖片一區 -->\n  <rect class=\"draggable\" x=\"20\" y=\"50\" width=\"170\" height=\"100\" fill=\"#ccc\" stroke=\"#999\" stroke-width=\"0.3\" />\n  <!-- <text x=\"105\" y=\"105\" text-anchor=\"middle\" font-size=\"5\" fill=\"#555\">Image Placeholder 1</text> -->\n\n  <!-- 圖片二區 -->\n  <rect class=\"draggable\" x=\"20\" y=\"160\" width=\"170\" height=\"100\" fill=\"#ccc\" stroke=\"#999\" stroke-width=\"0.3\" />\n  <!-- <text class=\"draggable\" x=\"105\" y=\"215\" text-anchor=\"middle\" font-size=\"5\" fill=\"#555\">Image Placeholder 2</text> -->\n\n  <!-- 標題區 -->\n  <text class=\"draggable\" x=\"105\" y=\"30\" text-anchor=\"middle\" font-size=\"8\" font-weight=\"bold\" fill=\"#333\">YOUR TITLE HERE</text>\n</svg>"
+}
