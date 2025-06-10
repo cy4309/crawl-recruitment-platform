@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default async function handler(req, res) {
-  const keyword = req.query.keyword || "前端工程師";
+  const keyword = req.query.keyword || "前端";
   const url = `https://www.104.com.tw/jobs/search/list?ro=0&keyword=${encodeURIComponent(keyword)}&page=1`;
 
   try {

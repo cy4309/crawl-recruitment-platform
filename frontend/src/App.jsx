@@ -13,7 +13,7 @@ function App() {
 
   const fetch104 = async () => {
     try {
-      const res = await axios.get(`${apiBaseUrl}/crawl-104`);
+      const res = await axios.get(`${apiBaseUrl}/crawl-104?keyword=前端`);
       setJobs(res.data.jobs);
       setSource(res.data.source);
     } catch (err) {
@@ -23,7 +23,7 @@ function App() {
 
   const fetchCake = async () => {
     try {
-      const res = await axios.get(`${apiBaseUrl}/crawl-cake`);
+      const res = await axios.get(`${apiBaseUrl}/crawl-cake?keyword=frontend`);
       setJobs(res.data.jobs);
       setSource(res.data.source);
     } catch (err) {
