@@ -6,9 +6,10 @@ export default async function handler(req, res) {
   if (!rateLimiter(req, res)) return;
 
   const keyword = req.query.keyword?.toString() || "frontend";
+  const page = req.query.page || 1;
   const url = `https://www.cakeresume.com/jobs?query=${encodeURIComponent(
     keyword
-  )}&page=1`;
+  )}&page=${page}`;
 
   try {
     const { data: html } = await axios.get(url, {

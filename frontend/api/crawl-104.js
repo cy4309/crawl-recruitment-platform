@@ -5,9 +5,10 @@ export default async function handler(req, res) {
   if (!rateLimiter(req, res)) return;
 
   const keyword = req.query.keyword || "前端";
+  const page = req.query.page || 1;
   const url = `https://www.104.com.tw/jobs/search/list?ro=0&keyword=${encodeURIComponent(
     keyword
-  )}&page=1`;
+  )}&page=${page}`;
 
   try {
     const { data } = await axios.get(url, {
