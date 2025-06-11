@@ -1,9 +1,14 @@
 import axios from "axios";
 import { load } from "cheerio";
+import { rateLimiter } from "@/src/utils/rateLimiter";
 
 export default async function handler(req, res) {
+  if (!rateLimiter(req, res)) return;
+
   const keyword = req.query.keyword?.toString() || "frontend";
-  const url = `https://www.cakeresume.com/jobs?query=${encodeURIComponent(keyword)}&page=1`;
+  const url = `https://www.cakeresume.com/jobs?query=${encodeURIComponent(
+    keyword
+  )}&page=1`;
 
   try {
     const { data: html } = await axios.get(url, {
@@ -17,7 +22,8 @@ export default async function handler(req, res) {
     const jobs = [];
 
     const safeText = (el, fallback = "") => el.text()?.trim() || fallback;
-    const safeAttr = (el, attr, fallback = "") => el.attr(attr)?.trim() || fallback;
+    const safeAttr = (el, attr, fallback = "") =>
+      el.attr(attr)?.trim() || fallback;
 
     $("div[class*=JobSearchItem_container]").each((_, el) => {
       const element = $(el);
@@ -25,17 +31,38 @@ export default async function handler(req, res) {
       const titleEl = element.find("a[class*='JobSearchItem_jobTitle']");
       const title = safeText(titleEl, "未知職稱");
       const jobHref = safeAttr(titleEl, "href");
-      const company = safeText(element.find("a[class*='JobSearchItem_companyName']"), "未知公司");
-      const location = safeText(element.find("i.fa-map-marker-alt").closest(".InlineMessage_inlineMessage____Ulc").find(".JobSearchItem_featureSegments__ywEPs"), "未知地點");
-      const salary = safeText(element.find("i.fa-dollar-sign").closest(".InlineMessage_inlineMessage____Ulc").find(".InlineMessage_label__LJGjW"), "未提供");
-      const description = safeText(element.find(".JobSearchItem_description__si5zg"), "無描述");
+      const company = safeText(
+        element.find("a[class*='JobSearchItem_companyName']"),
+        "未知公司"
+      );
+      const location = safeText(
+        element
+          .find("i.fa-map-marker-alt")
+          .closest(".InlineMessage_inlineMessage____Ulc")
+          .find(".JobSearchItem_featureSegments__ywEPs"),
+        "未知地點"
+      );
+      const salary = safeText(
+        element
+          .find("i.fa-dollar-sign")
+          .closest(".InlineMessage_inlineMessage____Ulc")
+          .find(".InlineMessage_label__LJGjW"),
+        "未提供"
+      );
+      const description = safeText(
+        element.find(".JobSearchItem_description__si5zg"),
+        "無描述"
+      );
       // const experience = element.find("i.fa-business-time").closest("div[class*='InlineMessage_label']").text()?.trim();
       // const management = element.find("i.fa-sitemap").closest("div[class*='InlineMessage_label']").text()?.trim();
       // const activeTime = element.find("i.fa-signal-strong").closest("div[class*='InlineMessage_label']").text()?.trim();
       // const views = element.find("i.fa-eye").closest("div[class*='InlineMessage_label']").text()?.trim();
       // const reviewingStatus = element.find("i.fa-file-check").closest("div[class*='InlineMessage_label']").text()?.trim();
       const jobType = safeText(element.find("a[href*='job_type']"), "未知類型");
-      const seniority = safeText(element.find("a[href*='seniority_level']"), "未知資歷");
+      const seniority = safeText(
+        element.find("a[href*='seniority_level']"),
+        "未知資歷"
+      );
 
       if (title && company) {
         jobs.push({
