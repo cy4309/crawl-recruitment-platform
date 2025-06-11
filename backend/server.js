@@ -8,7 +8,7 @@ app.use(cors());
 const PORT = 3000;
 
 // 104爬蟲路由
-app.get("/crawl-104", async (req, res) => {
+app.get("/api/crawl-104", async (req, res) => {
   const keyword = req.query.keyword || "前端工程師";
   const url = `https://www.104.com.tw/jobs/search/list?ro=0&keyword=${encodeURIComponent(keyword)}&page=1}`;
 
@@ -43,7 +43,7 @@ app.get("/crawl-104", async (req, res) => {
 });
 
 // CakeResume爬蟲路由
-app.get("/crawl-cake", async (req, res) => {
+app.get("/api/crawl-cake", async (req, res) => {
   const keyword = req.query.keyword?.toString() || "frontend";
   const url = `https://www.cakeresume.com/jobs?query=${encodeURIComponent(keyword)}&page=1`;
 
