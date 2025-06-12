@@ -18,9 +18,9 @@ function JobList({ jobs, obfuscate }) {
           <div className="text-sm text-gray-700">
             {obfuscate ? obfuscateText(job.company) : job.company}｜
             {obfuscate ? obfuscateText(job.location) : job.location}｜
-            {/* <span className="text-orange-600"> */}
-            {obfuscate ? obfuscateText(job.salary) : job.salary}
-            {/* </span> */}
+            <span className="text-orange-600">
+              {obfuscate ? obfuscateText(job.salary) : job.salary}
+            </span>
           </div>
           {/* <p className="text-sm text-gray-600">
             {obfuscate ? obfuscateText(job.description) : job.description}
