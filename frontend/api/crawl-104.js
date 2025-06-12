@@ -28,6 +28,9 @@ export default async function handler(req, res) {
         company: job.custName || "未知公司",
         location: job.jobAddrNoDesc + job.jobAddress || "未知地點",
         salary: job.salaryDesc || "未提供",
+        // salaryLow: job.salaryLow || "0000000",
+        // salaryHigh: job.salaryHigh || "0000000",
+        // seniority: job.periodDesc || "1年以上",
         description: job.description || "無描述",
         link: job.link.job || "未知連結",
       })) || [];

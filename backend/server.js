@@ -89,6 +89,7 @@ app.get("/api/crawl-104", async (req, res) => {
       },
     });
     // console.log("🧪 單筆職缺內容:", JSON.stringify(data.data.list[0], null, 2));
+    // console.log("🧪 單筆職缺內容:", JSON.stringify(data.data.list[1], null, 2));
 
     const jobs =
       data.data.list?.map((job) => ({
@@ -96,6 +97,9 @@ app.get("/api/crawl-104", async (req, res) => {
         company: job.custName || "未知公司",
         location: job.jobAddrNoDesc + job.jobAddress || "未知地點",
         salary: job.salaryDesc || "未提供",
+        // salaryLow: job.salaryLow || "0000000",
+        // salaryHigh: job.salaryHigh || "0000000",
+        // seniority: job.periodDesc || "1年以上",
         description: job.description || "無描述",
         link: job.link.job || "未知連結",
       })) || [];
