@@ -1,6 +1,6 @@
 import axios from "axios";
 import { load } from "cheerio";
-import { rateLimiter } from "@/src/utils/rateLimiter";
+import { rateLimiter } from "../src/utils/rateLimiter.js"; //Node.js 無法自動補上副檔名（在 ESM 模式下），因此要自己加後綴字，Vite 的 alias也會失效。
 
 export default async function handler(req, res) {
   if (!rateLimiter(req, res)) return;
