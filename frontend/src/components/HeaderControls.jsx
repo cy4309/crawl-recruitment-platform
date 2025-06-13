@@ -1,7 +1,7 @@
 import BaseButton from "@/components/BaseButton";
 import { obfuscateText } from "@/utils/obfuscateText";
 
-const Header = ({ controls }) => {
+const HeaderControls = ({ controls }) => {
   const {
     hideMode,
     platform,
@@ -21,9 +21,9 @@ const Header = ({ controls }) => {
 
   return (
     <>
-      <header className="w-full flex justify-start items-center">
+      <div className="w-full flex justify-end items-center">
         <div className="w-full md:w-1/2 flex justify-center items-center">
-          <div className="p-2 space-x-2 w-full rounded-xl flex justify-center items-center">
+          <div className="space-x-2 w-full rounded-xl flex justify-center items-center">
             <select
               value={platform}
               onChange={(e) => setPlatform(e.target.value)}
@@ -106,9 +106,9 @@ const Header = ({ controls }) => {
             <BaseButton onClick={handleFetch}>→</BaseButton>
           </div>
         </div>
-      </header>
+      </div>
     </>
   );
 };
 
-export default Header;
+export default HeaderControls;
