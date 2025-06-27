@@ -12,7 +12,9 @@
 
 # Step 4：啟動 FastAPI
 
-- npm run start || uvicorn app.main:app --reload
+- uvicorn app.main:app --reload (--reload 可用在本地開發，後端不用重啟) ||
+  uvicorn app.main:app --host=0.0.0.0 --port=8000 (上線用，Render 是外部機器，需明確指定--host=0.0.0.0) ||
+  npm run start (部屬會需多載 node)
 
 # Step 5：確保 venv 不會被 git 追蹤 (.gitignore)
 
