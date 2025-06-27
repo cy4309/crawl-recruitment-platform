@@ -4,6 +4,8 @@ import JobList from "@/components/JobList";
 import { obfuscateText } from "@/utils/obfuscateText";
 import HeaderControls from "@/components/HeaderControls";
 import BaseButton from "@/components/BaseButton";
+import LoadingIndicator from "@/components/LoadingIndicator";
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 
 function App() {
@@ -86,8 +88,8 @@ function App() {
         )}
       </header>
 
-      <main className="p-4 mt-4">
-        {loading && <p className="text-blue-600">Loading...</p>}
+      <main className="p-4 mt-4 w-full">
+        {loading && <LoadingIndicator />}
         {error && <p className="text-red-600">{error}</p>}
         {!loading && !error && jobs.length > 0 && (
           <div className="w-full flex flex-col">

@@ -1,0 +1,8 @@
+{
+  "name": "backend-fastapi-aiagent",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "uvicorn app.main:app --reload"
+  },
+  "devDependencies": {}
+}

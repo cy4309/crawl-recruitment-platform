@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Env
+.env
+.venv/
+env/
+venv/
+
+# VS Code / Editor
+.vscode/
+.idea/
+*.swp
+
+# macOS
+.DS_Store
+
+# Log / Test
+*.log
+*.sqlite3
+
+# OS junk files
+Thumbs.db

@@ -5,7 +5,7 @@ import cors from "cors";
 
 const app = express();
 app.use(cors());
-const PORT = 3000;
+const PORT = 8000;
 
 // CakeResume爬蟲路由
 app.get("/api/crawl-cake", async (req, res) => {
